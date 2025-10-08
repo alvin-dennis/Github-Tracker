@@ -8,7 +8,6 @@ import {
   GitPullRequest,
   Circle,
   AlertCircle,
-  X,
   ExternalLink,
 } from "lucide-react";
 import type { Repository, Issue, PullRequest } from "@/lib/data";
@@ -17,10 +16,9 @@ import { PullRequestList } from "@/components/pull-request-list";
 
 type RepoCardProps = {
   repository: Repository;
-  onRemove: () => void;
 };
 
-export function RepoCard({ repository, onRemove }: RepoCardProps) {
+export function RepoCard({ repository }: RepoCardProps) {
   const [issues, setIssues] = useState<Issue[]>([]);
   const [pullRequests, setPullRequests] = useState<PullRequest[]>([]);
   const [loading, setLoading] = useState(true);
@@ -162,15 +160,6 @@ export function RepoCard({ repository, onRemove }: RepoCardProps) {
               <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
             </a>
           </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onRemove}
-            className="h-7 w-7 p-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
-            title="Remove repository"
-          >
-            <X className="h-4 w-4" />
-          </Button>
         </div>
 
         <div className="flex flex-col gap-2 text-xs">
