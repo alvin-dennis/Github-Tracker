@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { GitBranch, AlertCircle } from "lucide-react";
+import { AlertCircle, X } from "lucide-react";
+import Image from "next/image";
 import { RepoCard } from "@/components/repo-card";
 import { REPOS, type Repository } from "@/lib/data";
 import { ModeToggle } from "@/components/mode-toggle";
@@ -22,11 +23,25 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2">
-                <GitBranch className="h-6 w-6 text-primary" />
-                <h1 className="text-xl font-semibold text-foreground">
-                  GitHub Tracker
-                </h1>
+                <Image
+                  src="/hficon.png"
+                  alt="Hacktoberfest logo"
+                  width={120}
+                  height={60}
+                  className="w-auto h-10 object-contain"
+                  priority
+                />
+                <span className="text-lg font-semibold text-primary"><X /></span>
+                <Image
+                  src="/mulearnicon.png"
+                  alt="MuLearn logo"
+                  width={120}
+                  height={60}
+                  className="w-auto h-10 object-contain"
+                  priority
+                />
               </div>
+
               <Badge variant="secondary" className="font-mono text-xs">
                 {repositories.length}{" "}
                 {repositories.length === 1 ? "repo" : "repos"}
@@ -42,10 +57,7 @@ export default function Home() {
       <div className="container mx-auto px-6 py-8">
         <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(min(100%,400px),1fr))]">
           {filteredRepos.map((repo) => (
-            <RepoCard
-              key={repo.id}
-              repository={repo}
-            />
+            <RepoCard key={repo.id} repository={repo} />
           ))}
         </div>
 

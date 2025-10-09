@@ -2,6 +2,16 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  compress: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "github.com",
+        pathname: "/*.png",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
