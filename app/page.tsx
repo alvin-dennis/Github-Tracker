@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { AlertCircle, X } from "lucide-react";
+import { X } from "lucide-react";
 import Image from "next/image";
 import { RepoCard } from "@/components/repo-card";
 import { REPOS, type Repository } from "@/lib/data";
@@ -41,11 +40,6 @@ export default function Home() {
                   priority
                 />
               </div>
-
-              <Badge variant="secondary" className="font-mono text-xs">
-                {repositories.length}{" "}
-                {repositories.length === 1 ? "repo" : "repos"}
-              </Badge>
             </div>
             <div className="flex items-center gap-2">
               <ModeToggle />
@@ -60,20 +54,6 @@ export default function Home() {
             <RepoCard key={repo.id} repository={repo} />
           ))}
         </div>
-
-        {filteredRepos.length === 0 && (
-          <div className="text-center py-12">
-            <AlertCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">
-              No repositories found
-            </h3>
-            <p className="text-muted-foreground">
-              {searchQuery
-                ? "Try a different search term"
-                : "Add a repository to get started"}
-            </p>
-          </div>
-        )}
       </div>
     </div>
   );
